@@ -162,6 +162,7 @@ const js = {
   "key.nested": "resx Data Manager"
 };
 
+
 const resx2js = require('resx/resx2js');
 resx2js(xml, (err, res) => {
   // res is like js
