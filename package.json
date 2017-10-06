@@ -1,0 +1,34 @@
+{
+  "name": "resx",
+  "version": "1.0.0",
+  "description": "resx2js and js2resx converter resx resource utils",
+  "main": "index.js",
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "dependencies": {
+    "xml2js": "0.4.18"
+  },
+  "devDependencies": {
+    "eslint": "^4.4.1",
+    "expect.js": "^0.3.1",
+    "mocha": "^3.2.0"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "test": "npm run lint && mocha test"
+  },
+  "keywords": [
+    "resx",
+    "microsoft",
+    "visual studio",
+    "visual",
+    "studio",
+    "json",
+    "js",
+    "translation",
+    "converter"
+  ],
+  "author": "adrai",
+  "license": "MIT"
+}
