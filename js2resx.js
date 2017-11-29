@@ -4,15 +4,17 @@ function js2resx(resources, opt, cb) {
 
   if (typeof opt === 'function') {
     cb = opt;
-    opt = { pretty: true, indent: ' ', newline: '\n' };
+    opt = { pretty: true, indent: '  ', newline: '\n' };
   }
 
   const builder = new xml2js.Builder({
     rootName: 'root',
     headless: false,
-    pretty: opt.pretty,
-    indent: opt.indent || ' ',
-    newline: opt.newline || '\n',
+    renderOpts: {
+      pretty: opt.pretty === false ? false : true,
+      indent: opt.indent || '  ',
+      newline: opt.newline || '\n'
+    },
     xmldec: { version: '1.0', encoding: 'utf-8' }
   });
 
