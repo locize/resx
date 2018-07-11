@@ -1,9 +1,14 @@
 const xml2js = require('xml2js');
 const parser = new xml2js.Parser();
 
-function resxToJs(str, cb) {
+function resxToJs(str, withComments, cb) {
   if (typeof str !== 'string') {
     return cb(new Error('The first parameter was not a string'));
+  }
+
+  if (!cb) {
+    cb = withComments;
+    withComments = false;
   }
 
   const result = {};
@@ -16,7 +21,18 @@ function resxToJs(str, cb) {
         if (d && d.$ && d.$.name && d.value && d.value.length > 0) {
           const key = d.$.name;
           const value = d.value[0];
-          result[key] = value;
+
+          if (!withComments) {
+            result[key] = value;
+          } else {
+            result[key] = {
+              value: value
+            };
+            if (d.comment) {
+              const comment = d.comment[0];
+              result[key].comment = comment;
+            }
+          }
         }
       });
     }

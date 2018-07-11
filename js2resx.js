@@ -228,6 +228,10 @@ function js2resx(resources, opt, cb) {
       },
       value: resources[key]
     };
+    if (typeof resources[key] === 'object' && resources[key].value) {
+      str.value = resources[key].value;
+      str.comment = resources[key].comment;
+    }
     resxJs.data.push(str);
   });
 
