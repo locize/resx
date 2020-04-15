@@ -10,16 +10,22 @@ Alternatively, you can install using npm:
 npm install --save resx
 ```
 
-You can then `require()` resx as normal:
+You can then `import` or `require()` resx as normal:
 
 ```js
-const resx = require('resx');
+import resx from 'resx'
+// or
+const resx = require('resx')
+
+resx.resx2js(xml, (err, res) => {})
 ```
 
-Or you can direclty `require()` its functions:
+Or you can direclty `import` or `require()` its functions:
 
 ```js
-const resx2js = require('resx/resx2js');
+import resx2js from 'resx/resx2js'
+// or
+const resx2js = require('resx/cjs/resx2js')
 ```
 
 ## Usage
@@ -154,23 +160,33 @@ const xml = `<?xml version="1.0" encoding="utf-8"?>
   <data name="key.nested" xml:space="preserve">
     <value>resx Data Manager</value>
   </data>
-</root>`;
+</root>`
 
 const js = {
   "key1": "Hello",
   "key2": "An application to manipulate and process resx documents",
   "key.nested": "resx Data Manager"
-};
+}
 
 
-const resx2js = require('resx/resx2js');
+import resx2js from 'resx/resx2js'
 resx2js(xml, (err, res) => {
   // res is like js
-});
+})
 
-const js2resx = require('resx/js2resx');
+import js2resx from 'resx/js2resx'
 js2resx(js, (err, res) => {
   // res is like xml
-});
+})
 
+```
+
+Omitting the callback returns a promise
+
+```js
+const resJs = await resx2js(xml)
+const resXml = await js2resx(js)
+// or
+resx2js(xml).then((res) => {})
+js2resx(js).then((res) => {})
 ```

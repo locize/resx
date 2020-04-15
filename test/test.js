@@ -1,45 +1,75 @@
-const expect = require('expect.js');
-const fixtures = require('./fixtures');
+const expect = require('expect.js')
+const fixtures = require('./fixtures')
 
-function test(what, t) {
+function test (what, t) {
   describe(what, () => {
-    it('index', t(require('../')[what]));
-    it('direct', t(require('../' + what)));
-  });
+    it('index', t(require('../')[what]))
+    it('direct', t(require('../cjs/' + what)))
+  })
 }
 
 test('resx2js', (fn) => (done) => {
   fn(fixtures.example.resx, (err, res) => {
-    expect(err).not.to.be.ok();
-    expect(res).to.eql(fixtures.example.js);
-    done();
-  });
-});
+    expect(err).not.to.be.ok()
+    expect(res).to.eql(fixtures.example.js)
+    done()
+  })
+})
 
 test('js2resx', (fn) => (done) => {
   fn(fixtures.example.js, (err, res) => {
-    expect(err).not.to.be.ok();
-    expect(res).to.eql(fixtures.example.resx);
-    done();
-  });
-});
+    expect(err).not.to.be.ok()
+    expect(res).to.eql(fixtures.example.resx)
+    done()
+  })
+})
+
+describe('promise', () => {
+  test('resx2js', (fn) => (done) => {
+    fn(fixtures.example.resx).then((res) => {
+      expect(res).to.eql(fixtures.example.js)
+      done()
+    })
+  })
+
+  test('js2resx', (fn) => (done) => {
+    fn(fixtures.example.js).then((res) => {
+      expect(res).to.eql(fixtures.example.resx)
+      done()
+    })
+  })
+})
 
 describe('with comment', () => {
-
   test('resx2js', (fn) => (done) => {
     fn(fixtures.example_comment.resx, true, (err, res) => {
-      expect(err).not.to.be.ok();
-      expect(res).to.eql(fixtures.example_comment.js);
-      done();
-    });
-  });
+      expect(err).not.to.be.ok()
+      expect(res).to.eql(fixtures.example_comment.js)
+      done()
+    })
+  })
 
   test('js2resx', (fn) => (done) => {
     fn(fixtures.example_comment.js, (err, res) => {
-      expect(err).not.to.be.ok();
-      expect(res).to.eql(fixtures.example_comment.resx);
-      done();
-    });
-  });
+      expect(err).not.to.be.ok()
+      expect(res).to.eql(fixtures.example_comment.resx)
+      done()
+    })
+  })
 
-});
+  describe('promise', () => {
+    test('resx2js', (fn) => (done) => {
+      fn(fixtures.example_comment.resx, true).then((res) => {
+        expect(res).to.eql(fixtures.example_comment.js)
+        done()
+      })
+    })
+
+    test('js2resx', (fn) => (done) => {
+      fn(fixtures.example_comment.js).then((res) => {
+        expect(res).to.eql(fixtures.example_comment.resx)
+        done()
+      })
+    })
+  })
+})

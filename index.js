@@ -1,4 +1,2 @@
-module.exports = {
-  resx2js: require('./resx2js'),
-  js2resx: require('./js2resx')
-};
+import backend from './lib/index.js'
+export default backend

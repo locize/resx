@@ -2,21 +2,51 @@
   "name": "resx",
   "version": "1.2.0",
   "description": "resx2js and js2resx converter resx resource utils",
-  "main": "index.js",
-  "engines": {
-    "node": ">=4.0.0"
+  "type": "module",
+  "main": "./cjs/index.js",
+  "exports": {
+    ".": {
+      "require": "./cjs/index.js",
+      "default": "./lib/index.js"
+    },
+    "./resx2js": {
+      "require": "./cjs/resx2js.js",
+      "default": "./lib/resx2js.js"
+    },
+    "./js2resx": {
+      "require": "./cjs/js2resx.js",
+      "default": "./lib/js2resx.js"
+    }
   },
+  "module": "./lib/index.js",
   "dependencies": {
-    "xml2js": "0.4.19"
+    "xml2js": "0.4.23"
   },
   "devDependencies": {
-    "eslint": "^4.4.1",
-    "expect.js": "^0.3.1",
-    "mocha": "^3.2.0"
+    "@babel/cli": "7.8.4",
+    "@babel/core": "7.9.0",
+    "@babel/preset-env": "7.9.5",
+    "babel-plugin-add-module-exports": "1.0.2",
+    "browserify": "16.5.1",
+    "eslint": "6.8.0",
+    "eslint-config-standard": "14.1.1",
+    "eslint-plugin-import": "2.20.2",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-promise": "4.2.1",
+    "eslint-plugin-require-path-exists": "1.1.9",
+    "eslint-plugin-standard": "4.0.1",
+    "expect.js": "0.3.1",
+    "mocha": "7.1.1",
+    "uglify-js": "3.9.1"
   },
   "scripts": {
     "lint": "eslint .",
-    "test": "npm run lint && mocha test"
+    "compile": "rm -rf cjs && mkdir cjs && babel lib -d cjs --presets=@babel/preset-env --plugins=add-module-exports && echo '{\"type\":\"commonjs\"}' > cjs/package.json",
+    "browser": "browserify --standalone resx cjs/index.js -o resx.js && uglifyjs resx.js --compress --mangle -o resx.min.js",
+    "build": "npm run compile && npm run browser",
+    "test": "npm run lint && npm run build && mocha test -R spec",
+    "preversion": "npm run test && npm run build && git push",
+    "postversion": "git push && git push --tags"
   },
   "keywords": [
     "resx",

@@ -1,0 +1,7 @@
+/build
+/node_modules
+/cjs
+/dist
+/resx.js
+/resx.min.js
+/example
