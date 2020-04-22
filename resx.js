@@ -4,6 +4,18 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+Object.defineProperty(exports, "resx2js", {
+  enumerable: true,
+  get: function get() {
+    return _resx2js["default"];
+  }
+});
+Object.defineProperty(exports, "js2resx", {
+  enumerable: true,
+  get: function get() {
+    return _js2resx["default"];
+  }
+});
 exports["default"] = void 0;
 
 var _resx2js = _interopRequireDefault(require("./resx2js.js"));
@@ -17,7 +29,6 @@ var _default = {
   js2resx: _js2resx["default"]
 };
 exports["default"] = _default;
-module.exports = exports.default;
 },{"./js2resx.js":2,"./resx2js.js":3}],2:[function(require,module,exports){
 "use strict";
 
@@ -284,7 +295,7 @@ module.exports = exports.default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = resx2Js;
+exports["default"] = resx2js;
 
 var _xml2js = _interopRequireDefault(require("xml2js"));
 
@@ -292,7 +303,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 var parser = new _xml2js["default"].Parser();
 
-var resx2JsClb = function resx2JsClb(str, withComments, cb) {
+var resx2jsClb = function resx2jsClb(str, withComments, cb) {
   if (!cb && typeof withComments === 'function') {
     cb = withComments;
     withComments = false;
@@ -329,10 +340,10 @@ var resx2JsClb = function resx2JsClb(str, withComments, cb) {
   });
 };
 
-function resx2Js(str, withComments, cb) {
+function resx2js(str, withComments, cb) {
   if (!cb && withComments === undefined) {
     return new Promise(function (resolve, reject) {
-      return resx2JsClb(str, withComments, function (err, ret) {
+      return resx2jsClb(str, withComments, function (err, ret) {
         return err ? reject(err) : resolve(ret);
       });
     });
@@ -340,13 +351,13 @@ function resx2Js(str, withComments, cb) {
 
   if (!cb && typeof withComments !== 'function') {
     return new Promise(function (resolve, reject) {
-      return resx2JsClb(str, withComments, function (err, ret) {
+      return resx2jsClb(str, withComments, function (err, ret) {
         return err ? reject(err) : resolve(ret);
       });
     });
   }
 
-  resx2JsClb(str, withComments, cb);
+  resx2jsClb(str, withComments, cb);
 }
 
 module.exports = exports.default;

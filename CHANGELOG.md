@@ -1,3 +1,7 @@
+### 2.0.1
+
+- fix export for dynamic imports
+
 ### 2.0.0
 
 - complete refactoring to make this module universal
