@@ -16,6 +16,15 @@
     "./js2resx": {
       "require": "./cjs/js2resx.js",
       "default": "./lib/js2resx.js"
+    },
+    "./cjs": {
+      "default": "./cjs/index.js"
+    },
+    "./cjs/resx2js": {
+      "default": "./cjs/resx2js.js"
+    },
+    "./cjs/js2resx": {
+      "default": "./cjs/js2resx.js"
     }
   },
   "module": "./lib/index.js",
