@@ -1,3 +1,7 @@
+### 2.0.3
+
+- transpile also esm
+
 ### 2.0.2
 
 - fix export for node v14 cjs

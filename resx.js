@@ -7,39 +7,39 @@ Object.defineProperty(exports, "__esModule", {
 Object.defineProperty(exports, "resx2js", {
   enumerable: true,
   get: function get() {
-    return _resx2js["default"];
+    return _resx2js.default;
   }
 });
 Object.defineProperty(exports, "js2resx", {
   enumerable: true,
   get: function get() {
-    return _js2resx["default"];
+    return _js2resx.default;
   }
 });
-exports["default"] = void 0;
+exports.default = void 0;
 
 var _resx2js = _interopRequireDefault(require("./resx2js.js"));
 
 var _js2resx = _interopRequireDefault(require("./js2resx.js"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _default = {
-  resx2js: _resx2js["default"],
-  js2resx: _js2resx["default"]
+  resx2js: _resx2js.default,
+  js2resx: _js2resx.default
 };
-exports["default"] = _default;
+exports.default = _default;
 },{"./js2resx.js":2,"./resx2js.js":3}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = js2resx;
+exports.default = js2resx;
 
 var _xml2js = _interopRequireDefault(require("xml2js"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -58,7 +58,7 @@ var js2resxClb = function js2resxClb(resources, opt, cb) {
     indent: '  ',
     newline: '\n'
   };
-  var builder = new _xml2js["default"].Builder({
+  var builder = new _xml2js.default.Builder({
     rootName: 'root',
     headless: false,
     renderOpts: {
@@ -295,13 +295,13 @@ module.exports = exports.default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = resx2js;
+exports.default = resx2js;
 
 var _xml2js = _interopRequireDefault(require("xml2js"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var parser = new _xml2js["default"].Parser();
+var parser = new _xml2js.default.Parser();
 
 var resx2jsClb = function resx2jsClb(str, withComments, cb) {
   if (!cb && typeof withComments === 'function') {
