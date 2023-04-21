@@ -1,6 +1,6 @@
 {
   "name": "resx",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "resx2js and js2resx converter resx resource utils",
   "type": "module",
   "main": "./cjs/index.js",
