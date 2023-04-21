@@ -1,3 +1,7 @@
+### 2.0.4
+
+- update dependencies and fix [#2](https://github.com/locize/resx/issues/2)
+
 ### 2.0.3
 
 - transpile also esm
